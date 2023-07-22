@@ -1,18 +1,14 @@
-import { getUsers } from "@/hooks/useGetUsers";
-import { dehydrate, QueryClient } from "@tanstack/react-query";
+import { GetServerSideProps } from "next";
 
 export default function Page() {
-  return <span>Hello, Next.js!</span>;
+  return <span></span>;
 }
 
-export async function getStaticProps() {
-  const queryClient = new QueryClient();
-
-  await queryClient.prefetchQuery(["posts"], getUsers);
-
+export const getServerSideProps: GetServerSideProps = async () => {
   return {
-    props: {
-      dehydratedState: dehydrate(queryClient),
+    redirect: {
+      destination: "/users",
+      permanent: false,
     },
   };
-}
+};
