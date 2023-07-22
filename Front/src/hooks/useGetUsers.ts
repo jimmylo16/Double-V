@@ -2,6 +2,7 @@ import { axiosCall } from "@/infraestructure/axios";
 import { GithubUsers } from "@/interfaces/githubUsers";
 
 import { useInfiniteQuery } from "@tanstack/react-query";
+import { useEffect } from "react";
 
 export const getUsers = (userName: string, page: number = 1) => {
   return axiosCall<GithubUsers>({
@@ -9,20 +10,36 @@ export const getUsers = (userName: string, page: number = 1) => {
     endpoint: `/search/users?q=${userName}&page=${page}`,
   });
 };
-const LIMIT = 10;
-export const useGetUsers = (userName: string, page: number = 1) => {
+export const useGetUsers = (userName: string) => {
   const usersQuery = useInfiniteQuery(
     ["getUsers"],
-    () => getUsers(userName, page),
+    ({ pageParam }) => getUsers(userName, pageParam),
     {
       getNextPageParam: (lastPage, allPages) => {
-        const nextPage =
-          lastPage.items.length === LIMIT ? allPages.length + 1 : undefined;
-        return nextPage;
+        return allPages.length + 1;
       },
       refetchOnWindowFocus: false,
       refetchOnMount: false,
+      retry: false,
     }
   );
+  const { hasNextPage, fetchNextPage } = usersQuery;
+  useEffect(() => {
+    let fetching = false;
+    const handleScroll = async (e: any) => {
+      const { scrollHeight, scrollTop, clientHeight } =
+        e.target.scrollingElement;
+      if (!fetching && scrollHeight - scrollTop <= clientHeight * 1.2) {
+        fetching = true;
+        if (hasNextPage) await fetchNextPage();
+        fetching = false;
+      }
+    };
+    document.addEventListener("scroll", handleScroll);
+    return () => {
+      document.removeEventListener("scroll", handleScroll);
+    };
+  }, [fetchNextPage, hasNextPage]);
+
   return usersQuery;
 };

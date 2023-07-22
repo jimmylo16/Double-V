@@ -1,15 +1,15 @@
 import { useGetUsers } from "@/hooks/useGetUsers";
 import Icon from "../common/Icon";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 
-export const UsersSearch = () => {
-  const [inputName, setInputName] = useState("");
-  const usersQuery = useGetUsers(inputName);
+type TUsersSearch = {
+  setInputName: Dispatch<SetStateAction<string>>;
+};
+export const UsersSearch = ({ setInputName }: TUsersSearch) => {
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setInputName(e.currentTarget.search.value);
   };
-  console.log(usersQuery);
   return (
     <form onSubmit={onSubmit}>
       <label
