@@ -1,4 +1,4 @@
-import { UserDetailPage } from "@/components/users/details/userDetailPage";
+import { UserDetailPage } from "@/components/users/details/UserDetailPage";
 import { useRouter } from "next/router";
 
 export default function UsersPage() {

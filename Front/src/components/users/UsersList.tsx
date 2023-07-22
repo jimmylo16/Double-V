@@ -31,8 +31,8 @@ export const UsersList = ({ inputName }: TUsersList) => {
     return <div className="mt-4">There is no userWith that name</div>;
   }
   return (
-    <section className="mt-4">
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+    <section className="mt-4 mx-3">
+      <div className="grid grid-cols-2 gap-4  md:grid-cols-3 lg:grid-cols-4">
         {data?.pages?.map((page) =>
           page.items.map((item) => <UserCard item={item} key={item.id} />)
         )}

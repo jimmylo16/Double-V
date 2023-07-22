@@ -13,7 +13,7 @@ export const UserCard: FC<TUserCard> = ({ item }) => {
   };
   return (
     <div
-      className="flex flex-col border-2  border-sky-300 rounded-md  p-2 cursor-pointer bg-slate-500"
+      className="flex flex-col border-2  border-sky-300 rounded-md  p-2 cursor-pointer bg-slate-500 flex items-center justify-center"
       key={item.id}
       onClick={onclick}
     >
@@ -22,9 +22,9 @@ export const UserCard: FC<TUserCard> = ({ item }) => {
         width={200}
         height={200}
         alt="Picture of the author"
-        className="rounded-lg mb-4"
+        className="rounded-lg mb-4 sm:w-52 w-20 "
       />
-      <span>{item.login}</span>
+      <span className="break-all text-center">{item.login}</span>
     </div>
   );
 };
