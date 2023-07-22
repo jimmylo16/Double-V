@@ -4,7 +4,7 @@ import { UsersList } from "@/components/users/UsersList";
 import { useEffect, useState } from "react";
 
 export default function UsersPage() {
-  const [inputName, setInputName] = useState("example");
+  const [inputName, setInputName] = useState<string>();
 
   return (
     <div className="flex flex-col items-center  min-h-screen py-4">

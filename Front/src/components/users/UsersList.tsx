@@ -2,7 +2,7 @@ import { useGetUsers } from "@/hooks/useGetUsers";
 import React, { useEffect } from "react";
 import { UserCard } from "./UserCard";
 type TUsersList = {
-  inputName: string;
+  inputName?: string;
 };
 export const UsersList = ({ inputName }: TUsersList) => {
   const usersQuery = useGetUsers(inputName);
@@ -24,8 +24,13 @@ export const UsersList = ({ inputName }: TUsersList) => {
       document.removeEventListener("scroll", handleScroll);
     };
   }, [fetchNextPage, hasNextPage]);
+
   if (usersQuery.isLoading) {
-    return <div>Cargando...</div>;
+    return <div>Loading...</div>;
+  }
+  if (usersQuery.isError) {
+    const message = (usersQuery.failureReason as any)?.response.data.message;
+    return <div className="mt-4">{message}</div>;
   }
   if (data?.pages[0].total_count === 0) {
     return <div className="mt-4">There is no userWith that name</div>;

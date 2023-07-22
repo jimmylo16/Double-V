@@ -3,8 +3,8 @@ import Icon from "../common/Icon";
 import { Dispatch, SetStateAction, useState } from "react";
 
 type TUsersSearch = {
-  setInputName: Dispatch<SetStateAction<string>>;
-  inputName: string;
+  setInputName: Dispatch<SetStateAction<string | undefined>>;
+  inputName: string | undefined;
 };
 export const UsersSearch = ({ setInputName, inputName }: TUsersSearch) => {
   const usersQuery = useGetUsers(inputName);
