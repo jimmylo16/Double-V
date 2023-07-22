@@ -1,8 +1,17 @@
+import { useGetUsers } from "@/hooks/useGetUsers";
 import Icon from "../common/Icon";
+import { useState } from "react";
 
 export const UsersSearch = () => {
+  const [inputName, setInputName] = useState("");
+  const usersQuery = useGetUsers(inputName);
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setInputName(e.currentTarget.search.value);
+  };
+  console.log(usersQuery);
   return (
-    <form>
+    <form onSubmit={onSubmit}>
       <label
         htmlFor="search"
         className="mb-2 text-sm font-medium text-gray-900 sr-only "

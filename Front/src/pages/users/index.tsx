@@ -2,6 +2,7 @@ import { UsersSearch } from "@/components/users/UsersSearch";
 import Github from "@/components/svg/Github";
 import { getUsers } from "@/hooks/useGetUsers";
 import { dehydrate, QueryClient } from "@tanstack/react-query";
+import { UsersList } from "@/components/users/UsersList";
 
 export default function UsersPage() {
   return (
@@ -11,18 +12,7 @@ export default function UsersPage() {
         <Github height={24} />
       </div>
       <UsersSearch />
+      <UsersList />
     </div>
   );
-}
-
-export async function getStaticProps() {
-  const queryClient = new QueryClient();
-
-  await queryClient.prefetchQuery(["posts"], getUsers);
-
-  return {
-    props: {
-      dehydratedState: dehydrate(queryClient),
-    },
-  };
 }
