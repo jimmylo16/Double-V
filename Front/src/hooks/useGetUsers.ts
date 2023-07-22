@@ -1,13 +1,14 @@
-import { axiosCall } from "@/infraestructure/axios";
+import { axiosGithub } from "@/infraestructure/axiosGithub";
 import { GithubUsers } from "@/interfaces/githubUsers";
 
 import { useInfiniteQuery } from "@tanstack/react-query";
 
 const PERPAGE = 10;
 export const getUsers = (userName: string, page: number = 1) => {
-  return axiosCall<GithubUsers>({
+  return axiosGithub<GithubUsers>({
     method: "get",
-    endpoint: `/search/users?q=${userName}&page=${page}&per_page=${PERPAGE}`,
+    endpoint: `/search/users`,
+    query: `q=${userName}&page=${page}&per_page=${PERPAGE}`,
   });
 };
 export const useGetUsers = (userName: string) => {
