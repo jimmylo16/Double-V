@@ -2,7 +2,7 @@ import { getUsers } from "@/hooks/useGetUsers";
 import { dehydrate, QueryClient } from "@tanstack/react-query";
 
 export default function Page() {
-  return <h1>Hello, Next.js!</h1>;
+  return <span>Hello, Next.js!</span>;
 }
 
 export async function getStaticProps() {
