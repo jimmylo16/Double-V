@@ -1,6 +1,5 @@
 import { UsersSearch } from "@/components/users/UsersSearch";
 import Github from "@/components/svg/Github";
-import { useGetUsers } from "@/hooks/useGetUsers";
 import { UsersList } from "@/components/users/UsersList";
 import { useEffect, useState } from "react";
 
@@ -13,7 +12,7 @@ export default function UsersPage() {
         <h1 className="text-2xl font-bold ">Search a github User!</h1>
         <Github height={24} />
       </div>
-      <UsersSearch setInputName={setInputName} />
+      <UsersSearch setInputName={setInputName} inputName={inputName} />
       <UsersList inputName={inputName} />
     </div>
   );

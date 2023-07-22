@@ -4,12 +4,15 @@ import { Dispatch, SetStateAction, useState } from "react";
 
 type TUsersSearch = {
   setInputName: Dispatch<SetStateAction<string>>;
+  inputName: string;
 };
-export const UsersSearch = ({ setInputName }: TUsersSearch) => {
+export const UsersSearch = ({ setInputName, inputName }: TUsersSearch) => {
+  const usersQuery = useGetUsers(inputName);
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setInputName(e.currentTarget.search.value);
+    usersQuery.refetch();
   };
+
   return (
     <form onSubmit={onSubmit}>
       <label
@@ -28,6 +31,8 @@ export const UsersSearch = ({ setInputName }: TUsersSearch) => {
           className="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 "
           placeholder="Search"
           required
+          value={inputName}
+          onChange={(e) => setInputName(e.target.value)}
         />
         <button
           type="submit"

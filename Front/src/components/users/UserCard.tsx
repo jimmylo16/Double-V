@@ -8,7 +8,7 @@ type TUserCard = {
 export const UserCard: FC<TUserCard> = ({ item }) => {
   return (
     <div
-      className="flex flex-col border-2  border-sky-300 rounded-md  p-2 cursor-pointer"
+      className="flex flex-col border-2  border-sky-300 rounded-md  p-2 cursor-pointer bg-slate-500"
       key={item.id}
     >
       <Image
@@ -16,6 +16,7 @@ export const UserCard: FC<TUserCard> = ({ item }) => {
         width={200}
         height={200}
         alt="Picture of the author"
+        className="rounded-lg mb-4"
       />
       <span>{item.login}</span>
     </div>
