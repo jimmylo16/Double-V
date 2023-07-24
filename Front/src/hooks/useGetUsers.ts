@@ -12,6 +12,7 @@ export const getUsers = (userName: string = "example", page: number = 1) => {
   });
 };
 export const useGetUsers = (userName?: string) => {
+  userName === "" ? (userName = "example") : userName;
   const usersQuery = useInfiniteQuery(
     ["getUsers"],
     ({ pageParam }) => getUsers(userName, pageParam),
