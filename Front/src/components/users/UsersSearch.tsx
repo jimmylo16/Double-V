@@ -2,6 +2,7 @@ import { useGetUsers } from "@/hooks/useGetUsers";
 import Icon from "../common/Icon";
 import { Dispatch, SetStateAction, useState } from "react";
 import { useGlobalState } from "@/hooks/useGlobalState";
+import FollowersBarChart from "../common/FollowersBarChart";
 
 type TUsersSearch = {
   setInputName: Dispatch<SetStateAction<string>>;
@@ -61,6 +62,8 @@ export const UsersSearch = ({ setInputName, inputName }: TUsersSearch) => {
           </button>
         </div>
       </div>
+
+      {usersQuery.data && <FollowersBarChart followersData={usersQuery.data} />}
       <div className="flex justify-center">
         <span>
           Current search: <span className="font-bold">{currentSearch}</span>
