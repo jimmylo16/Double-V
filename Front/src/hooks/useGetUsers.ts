@@ -23,7 +23,6 @@ export const useGetUsers = (userName?: string) => {
       refetchOnWindowFocus: false,
       refetchOnMount: false,
       retry: false,
-      enabled: !!userName && userName !== "",
     }
   );
 

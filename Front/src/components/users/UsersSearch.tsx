@@ -8,8 +8,10 @@ type TUsersSearch = {
 };
 export const UsersSearch = ({ setInputName, inputName }: TUsersSearch) => {
   const usersQuery = useGetUsers(inputName);
+  const [currenSearch, setCurrenSearch] = useState("example");
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setCurrenSearch(inputName ? inputName : "example");
     usersQuery.refetch();
   };
 
@@ -40,6 +42,11 @@ export const UsersSearch = ({ setInputName, inputName }: TUsersSearch) => {
         >
           Search
         </button>
+      </div>
+      <div className="flex justify-center">
+        <span>
+          Current search: <span className="font-bold">{currenSearch}</span>
+        </span>
       </div>
     </form>
   );
