@@ -14,7 +14,12 @@ export const GlobalProvider = ({ children }: { children: ReactNode }) => {
   return (
     <GlobalContext.Provider value={{ showError, setShowError, setSearchError }}>
       <Modal showModal={showError} setShowModal={setShowError}>
-        <p className="text-red-500 text-sm">{searchError}</p>
+        <section className="bg-white p-8">
+          <h2 className="text-xl font-bold text-center text-black mb-4">
+            Error
+          </h2>
+          <p className="text-red-500 text-sm">{searchError}</p>
+        </section>
       </Modal>
       {children}
     </GlobalContext.Provider>

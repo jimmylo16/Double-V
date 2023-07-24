@@ -11,7 +11,7 @@ export const UserDetailPage: FC<TUserDetailPage> = ({ userName }) => {
   if (userQuery.isLoading) {
     return <div>Loading...</div>;
   }
-  console.log(userQuery.isSuccess);
+
   return (
     <section className="flex flex-col items-center justify-center">
       <div

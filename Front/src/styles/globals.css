@@ -10,3 +10,6 @@
     @apply font-medium text-white text-base;
   }
 }
+.modal-scroll::-webkit-scrollbar {
+  display: none;
+}

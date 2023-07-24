@@ -19,12 +19,12 @@ export const UsersSearch = ({ setInputName, inputName }: TUsersSearch) => {
     e.preventDefault();
     if (inputName && inputName.trim().length < 4) {
       setShowError(true);
-      setSearchError("the number of characters must be greatter than 4");
+      setSearchError("The number of characters must be greatter than 4");
       return;
     }
     if (inputName && NOT_ALLOWD_SEARCH.includes(inputName)) {
       setShowError(true);
-      setSearchError("you can't search for this user");
+      setSearchError("You can't search for this user");
       return;
     }
     setCurrentSearch(inputName ? inputName : "example");
