@@ -33,7 +33,7 @@ export const UsersList = ({ inputName }: TUsersList) => {
     return <div className="mt-4">{message}</div>;
   }
   if (data?.pages[0].total_count === 0) {
-    return <div className="mt-4">There is no userWith that name</div>;
+    return <div className="mt-4">There is no user with that name</div>;
   }
   return (
     <section className="mt-4 mx-3">

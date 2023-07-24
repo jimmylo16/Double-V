@@ -8,9 +8,8 @@ import {
   XAxis,
   YAxis,
   CartesianGrid,
-  Tooltip,
-  Legend,
   ResponsiveContainer,
+  Text,
 } from "recharts";
 
 type TFollowersBarChart = {
@@ -21,19 +20,28 @@ const FollowersBarChart: FC<TFollowersBarChart> = ({ followersData }) => {
 
   const userFollowersQuery = useGetFollowers(data);
 
-  console.log({ userFollowersQuery, data });
+  console.log({ userFollowersQuery, followersData });
 
-  return (
-    <ResponsiveContainer width="100%" height={300}>
-      <BarChart data={data}>
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" />
-        <YAxis />
-        <Tooltip />
-        <Legend />
-        <Bar dataKey="followers" fill="#8884d8" />
-      </BarChart>
-    </ResponsiveContainer>
+  return userFollowersQuery.isSuccess ? (
+    <>
+      <ResponsiveContainer width="100%" height={300}>
+        <BarChart data={userFollowersQuery.data}>
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis
+            dataKey="user"
+            axisLine={{ stroke: "#ffffff " }}
+            tick={{ fill: "#ffffff " }}
+          />
+          <YAxis
+            axisLine={{ stroke: "#ffffff " }}
+            tick={{ fill: "#ffffff " }}
+          />
+          <Bar dataKey="numberOfFollowers" fill="#8884d8" />
+        </BarChart>
+      </ResponsiveContainer>
+    </>
+  ) : (
+    <>Loading Followers Chart</>
   );
 };
 

@@ -5,8 +5,7 @@ import { sleep } from "@/utils/sleep";
 import { useQuery } from "@tanstack/react-query";
 
 export const getFollowersByUserName = async (userName?: string) => {
-  console.log(userName);
-  await sleep(1500);
+  await sleep(500);
   return axiosGithub<GithubUsers[]>({
     method: "get",
     endpoint: `/users/${userName}/following`,
@@ -14,14 +13,17 @@ export const getFollowersByUserName = async (userName?: string) => {
 };
 export const useGetFollowers = (data: string[]) => {
   const userFollowersQuery = useQuery(
-    ["followers"],
+    ["followers", data],
     async () => {
       const followers = [];
       for (const login of data) {
         const response = await getFollowersByUserName(login);
         followers.push(response);
       }
-      return followers;
+      return followers.map((item, index) => ({
+        numberOfFollowers: item.length,
+        user: data[index],
+      }));
     },
     {
       retry: false,
