@@ -1,3 +1,5 @@
+import { AxiosInstance } from "axios";
+
 export const AXIOS_METHODS = {
   get: "get",
   post: "post",
@@ -13,3 +15,6 @@ export type IAxiosCall = {
   id?: string;
   body?: any;
 };
+export type IAxiosHelper = {
+  axiosInstance: AxiosInstance;
+} & IAxiosCall;

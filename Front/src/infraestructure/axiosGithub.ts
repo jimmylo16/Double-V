@@ -1,5 +1,6 @@
 import axios from "axios";
 import { IAxiosCall } from ".";
+import { axiosHelper } from "./axiosHelper";
 
 const axiosGithubInstance = axios.create({
   baseURL: "https://api.github.com/",
@@ -15,19 +16,14 @@ export const axiosGithub = async <T>({
   id,
   body,
 }: IAxiosCall): Promise<T> => {
-  let url = `${endpoint}`;
-  if (id) {
-    url = url.concat(`/${id}`);
-  }
-  if (query) {
-    url = url.concat(`?${query}`);
-  }
-
-  const { data } = await axiosGithubInstance({
+  return axiosHelper<T>({
+    axiosInstance: axiosGithubInstance,
+    endpoint,
+    query,
+    id,
     method,
-    url,
-    data: body,
+    body,
   });
-  return data;
 };
+
 export default axiosGithubInstance;

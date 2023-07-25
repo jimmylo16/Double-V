@@ -6,6 +6,9 @@ type TUserDetailCard = {
   userData: GithubUsers;
 };
 export const UserDetailCard: FC<TUserDetailCard> = ({ userData }) => {
+  const handleSave = () => {
+    console.log("first");
+  };
   return (
     <>
       <div className="bg-slate-500 rounded-lg shadow-md p-4 flex lg:flex-row flex-col gap-3">
@@ -22,7 +25,7 @@ export const UserDetailCard: FC<TUserDetailCard> = ({ userData }) => {
           <p className="text-sm text-center mb-2">
             Type: {userData.items[0].type}
           </p>
-          <div className="flex justify-center">
+          <div className="flex justify-center  flex-col">
             <a
               href={userData.items[0].html_url}
               target="_blank"
@@ -31,6 +34,12 @@ export const UserDetailCard: FC<TUserDetailCard> = ({ userData }) => {
             >
               View Profile
             </a>
+            <button
+              onClick={handleSave}
+              className="bg-blue-500 text-white rounded-md mt-4"
+            >
+              Save
+            </button>
           </div>
         </section>
       </div>

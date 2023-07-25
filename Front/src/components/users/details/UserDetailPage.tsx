@@ -15,7 +15,7 @@ export const UserDetailPage: FC<TUserDetailPage> = ({ userName }) => {
   return (
     <section className="flex flex-col items-center justify-center">
       <div
-        className="flex flex-col items-center cursor-pointer py-4"
+        className="flex flex-col items-center cursor-pointer my-4 p-2 bg-blue-500 rounded-md"
         onClick={() => router.back()}
       >
         Go back
