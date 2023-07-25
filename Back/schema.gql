@@ -12,6 +12,9 @@ type User {
   """url of user"""
   user_url: String!
 
+  """link of the avatar img"""
+  avatar_url: String!
+
   """date added"""
   date_added: DateTime!
 }
@@ -38,6 +41,9 @@ input CreateUserInput {
 
   """url of user"""
   user_url: String!
+
+  """link of the avatar img"""
+  avatar_url: String!
 }
 
 input UpdateUserInput {
@@ -46,5 +52,8 @@ input UpdateUserInput {
 
   """url of user"""
   user_url: String
+
+  """link of the avatar img"""
+  avatar_url: String
   user_id: String!
 }

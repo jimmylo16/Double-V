@@ -1,14 +1,13 @@
 import { GithubUsers } from "@/interfaces/githubUsers";
 import React, { FC } from "react";
 import Image from "next/image";
+import { useGetDbUsers } from "@/hooks/useDBUsers";
 
 type TUserDetailCard = {
   userData: GithubUsers;
 };
 export const UserDetailCard: FC<TUserDetailCard> = ({ userData }) => {
-  const handleSave = () => {
-    console.log("first");
-  };
+  const handleSave = () => {};
   return (
     <>
       <div className="bg-slate-500 rounded-lg shadow-md p-4 flex lg:flex-row flex-col gap-3">

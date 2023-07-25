@@ -29,3 +29,16 @@ export interface Item {
 export enum Type {
   User = "User",
 }
+
+export interface SavedUsers {
+  data: {
+    users: User[];
+  };
+}
+type User = {
+  user_id: string;
+  user_name: string;
+  user_url: string;
+  date_added: string;
+  avatar_url: string;
+};

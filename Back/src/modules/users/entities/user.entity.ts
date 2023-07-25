@@ -21,6 +21,10 @@ export class User {
   @Field(() => String, { description: 'url of user' })
   user_url: string;
 
+  @Column({ nullable: true })
+  @Field(() => String, { description: 'link of the avatar img' })
+  avatar_url: string;
+
   @CreateDateColumn({ type: 'timestamptz' })
   @Field(() => Date, { description: 'date added' })
   date_added: Date;

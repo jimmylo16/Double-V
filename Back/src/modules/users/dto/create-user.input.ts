@@ -7,4 +7,7 @@ export class CreateUserInput {
 
   @Field(() => String, { description: 'url of user' })
   user_url: string;
+
+  @Field(() => String, { description: 'link of the avatar img' })
+  avatar_url?: string;
 }
