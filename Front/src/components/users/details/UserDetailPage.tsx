@@ -4,6 +4,7 @@ import { FC } from "react";
 import { UserDetailCard } from "./UserDetailCard";
 import { useGetDbUsers } from "@/hooks/useDBUsers";
 import { UserCard } from "../UserCard";
+import { UserSavedProfilesList } from "./UserSavedProfilesList";
 type TUserDetailPage = {
   userName: string;
 };
@@ -24,16 +25,9 @@ export const UserDetailPage: FC<TUserDetailPage> = ({ userName }) => {
         Go back
       </div>
       {userQuery.isSuccess && <UserDetailCard userData={userQuery.data} />}
-      {dbUsersQuery.isSuccess &&
-        dbUsersQuery.data.data.users.map((user) => {
-          return (
-            <UserCard
-              name={user.user_name}
-              urlProfile={user.avatar_url}
-              key={user.user_id}
-            />
-          );
-        })}
+      {dbUsersQuery.isSuccess && (
+        <UserSavedProfilesList dbUsersQuery={dbUsersQuery} />
+      )}
     </section>
   );
 };

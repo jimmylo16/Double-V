@@ -9,7 +9,7 @@ export const getDBUsers = async () => {
     body: JSON.stringify({
       query: `
       query{
-        users(take: 1){
+        users(take: 25){
           user_id
           user_name
           user_url

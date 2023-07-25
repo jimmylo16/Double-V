@@ -14,18 +14,18 @@ const NOT_ALLOWD_SEARCH = ["doublevpartners"];
 export const UsersSearch = ({ setInputName, inputName }: TUsersSearch) => {
   const usersQuery = useGetUsers(inputName);
   const [currentSearch, setCurrentSearch] = useState("example");
-  const { setShowError, setSearchError } = useGlobalState();
+  const { setShowError, setErrorMsg } = useGlobalState();
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (inputName && inputName.trim().length < 4) {
       setShowError(true);
-      setSearchError("The number of characters must be greatter than 4");
+      setErrorMsg("The number of characters must be greatter than 4");
       return;
     }
     if (inputName && NOT_ALLOWD_SEARCH.includes(inputName)) {
       setShowError(true);
-      setSearchError("You can't search for this user");
+      setErrorMsg("You can't search for this user");
       return;
     }
     setCurrentSearch(inputName ? inputName : "example");
