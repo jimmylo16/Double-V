@@ -4,7 +4,6 @@ import { ConfigModule } from '@nestjs/config';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { UsersModule } from './modules/users/users.module';
-import { User } from './modules/users/entities/user.entity';
 
 @Module({
   imports: [
@@ -24,7 +23,6 @@ import { User } from './modules/users/entities/user.entity';
       password: process.env.DB_PASSWORD,
       autoLoadEntities: true,
       synchronize: true,
-      entities: [User],
     }),
     UsersModule,
   ],
